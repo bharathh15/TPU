@@ -34,7 +34,7 @@ module tb_PE;
     // Test sequence
     initial begin
         // Initialize signals
-        clk   = 0;
+        clk   = 1;
         rst_n = 0;
         en    = 0;
         A_in  = 0;
@@ -61,22 +61,23 @@ module tb_PE;
         #10;          // Wait for 1 clock
 
         // Test vector 3
-        A_in = 8'd1;  // A = 1
+        A_in = 8'd0;  // A = 1
         B_in = 8'd6;  // B = 6
         #10;          // Wait for 1 clock
 
         // Test vector 4
-        A_in = 8'd0;  // A = 0 (end of data)
-        B_in = 8'd0;  // B = 0
-        #10;          // Wait for 1 clock
+        A_in = 8'd2;  // A = 0 (end of data)
+        B_in = 8'd8;  // B = 0
+        #50;          // Wait for 1 clock
 
         // Disable PE
         en = 0;
 
         // Wait for a few more cycles to observe outputs
-        #20;
+       
 
         // Finish simulation
+        #200;
         $finish;
     end
 
